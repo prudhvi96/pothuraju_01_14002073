@@ -27,29 +27,25 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public Student[] getStudents()
-        {
-		// Add your implementation here
-		this.students=students;
-                return null;
-        }
+	public Student[] getStudents() {
+		
+		return students;
+	}
 
 	@Override
 	public void setStudents(Student[] students) {
-		// Add your implementation here
-                this.students=students;
+		this.students=students;
 	}
 
 	@Override
 	public Student getStudent(int index) {
-		// Add your implementation here
-                return students[index];
+
+		return students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=index;i<len+1;i++)
                 {
                     students[i+1]=students[i];
@@ -59,8 +55,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void addFirst(Student student) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=0;i<len+1;i++)
                 {
                     students[i+1]=students[i];
@@ -70,15 +65,13 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void addLast(Student student) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 students[len]=student;
 	}
 
 	@Override
 	public void add(Student student, int index) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=index;i<len+1;i++)
                 {
                     students[i+1]=students[i];
@@ -88,8 +81,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void remove(int index) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=index;i<len-1;i++)
                 {
                     students[i]=students[i+1];
@@ -98,8 +90,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void remove(Student student) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 int count=0;
                 for(int i=0;i<len;i++)
                 {
@@ -117,8 +108,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeFromIndex(int index) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=index;i<len;i++)
                 {
                    students[i+1]=null; 
@@ -127,7 +117,6 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeFromElement(Student student) {
-		// Add your implementation here
                 int len=students.length;
                 int count=0;
                 for(int i=0;students[i]!=student;i++)
@@ -138,12 +127,11 @@ public class StudentGroup implements StudentArrayOperation {
                 {
                     students[i+1]=null;
                 }
-	}
+        }
 
 	@Override
 	public void removeToIndex(int index) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=0;i<index;i++)
                 {
                     students[i]=null;
@@ -152,8 +140,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeToElement(Student student) {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 for(int i=0;students[i]!=student;i++)
                 {
                     students[i]=null;
@@ -167,14 +154,29 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
-		// Add your implementation here
+		int len=students.length;
+                for(int i=0;i<len;i++)
+                {
+                    if(students[i].getBirthDate()==date)
+                    {
+                        System.out.println(students[i]);
+                    }
+                }
 		return null;
 	}
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
-		// Add your implementation here
-		return null;
+		int len=students.length;
+                Student[] arr=null;
+                for(int i=0;i<len;i++)
+                {
+                    if((students[i].getBirthDate().after(firstDate)) && (students[i].getBirthDate().before(lastDate)))
+                    {
+                        arr[i]=students[i];
+                    }
+                }
+		return arr;
 	}
 
 	@Override
@@ -197,8 +199,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		// Add your implementation here
-                int len=students.length;
+		int len=students.length;
                 Student[] narr=null;
                 double arr[]=new double[len];
                 for(int i=0;i<len;i++)
@@ -214,12 +215,11 @@ public class StudentGroup implements StudentArrayOperation {
                         narr[j]=students[i];
                     }
                 }
-		return null;
+		return narr;
 	}
 
 	@Override
 	public Student getNextStudent(Student student) {
-		// Add your implementation here
 		int len=students.length;
                 int count=0;
                 for(int i=0;students[i]!=student;i++)
